@@ -19,11 +19,12 @@ public class Test {
 		public static void main(String[] args) throws Exception {
 
 			//testAdd();
+			
 			//testUpdate();
 			//testDelete();
 			//testSearch();
 			//testGetMeritList();
-			testGet();
+			//testGet();
 		}
 
 		public static void testAdd() throws Exception {
@@ -125,21 +126,21 @@ public static void testGet() throws Exception {
 	
 	MarksheetModelJDBC model6 = new MarksheetModelJDBC();
 	
-	List list = model6.search();
+	List listtt = model6.get(2);
 	
-	Iterator it = list.iterator();
+	Iterator it = listtt.iterator();
 			
 	while(it.hasNext())
 	{
 		MarksheetBeanJDBC bean6 = (MarksheetBeanJDBC) it.next();
 		
-		bean6.setId(5);
-		//System.out.println(bean6.getId());
-		/*System.out.println(bean4.getFname());
-		System.out.println(bean4.getLname());
-		System.out.println(bean4.getPhy());
-		System.out.println(bean4.getChem());
-		System.out.println(bean4.getMaths());*/
+		//bean6.setId(5);
+		System.out.println(bean6.getId());
+		System.out.println(bean6.getFname());
+		System.out.println(bean6.getLname());
+		System.out.println(bean6.getPhy());
+		System.out.println(bean6.getChem());
+		System.out.println(bean6.getMaths());
 		
 	}
 

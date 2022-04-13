@@ -136,9 +136,6 @@ public class MarksheetModelJDBC {
 					bean4.setMaths(rs.getInt(6));
 					
 					list.add(bean4);
-					
-					
-					
 				}
 				
 				conn.commit();
@@ -178,7 +175,7 @@ public class MarksheetModelJDBC {
 				ps.close();
 				return listt;
 	}
-		public void get(MarksheetBeanJDBC bean6) throws Exception
+		public ArrayList<MarksheetBeanJDBC> get(int id) throws Exception
 		{
 			 Class.forName("com.mysql.jdbc.Driver");
 				
@@ -189,7 +186,31 @@ public class MarksheetModelJDBC {
 			PreparedStatement ps = conn.prepareStatement("select * from marksheet where id=?");
 				
 			
-			ps.setInt(1, bean6.getId());
+			//ps.setInt(1, bean6.getId());
+			ps.setInt(1, id);
+			
+				ResultSet rs = ps.executeQuery();
+				ArrayList<MarksheetBeanJDBC> listtt = new ArrayList<MarksheetBeanJDBC>();
+				//MarksheetBeanJDBC bean6 = null;
+				
+				while(rs.next())
+				{
+					MarksheetBeanJDBC bean6 = new MarksheetBeanJDBC();
+					
+					bean6.setId(rs.getInt(1));
+					bean6.setFname(rs.getString(2));
+					bean6.setLname(rs.getString(3));
+					bean6.setPhy(rs.getInt(4));
+					bean6.setChem(rs.getInt(5));
+					bean6.setMaths(rs.getInt(6));
+					
+					listtt.add(bean6);
+					
+				}
+				conn.commit();
+				ps.close();
+				return listtt;
+			//return null;
 	}
 }
 
